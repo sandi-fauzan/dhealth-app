@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <h1>History Pendaftaran</h1>
-    <p>{{ key }}</p>
   </div>
 </template>
 

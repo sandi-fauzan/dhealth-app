@@ -18,12 +18,17 @@
       </form>
     </div>
   </div>
+  <HistoryPendaftaran :getHistoryPendaftaran="getHistoryPendaftaran" />
 </template>
 
 <script>
 import axios from "axios";
+import HistoryPendaftaran from "@/views/HistoryPendaftaran";
 export default {
   name: "Home",
+  components: {
+    HistoryPendaftaran,
+  },
   data() {
     return {
       email: "",
@@ -41,15 +46,15 @@ export default {
             params: { email: this.email },
           })
           .then(
-            (res) => (this.key = res.data.key),
-            this.$router.push({
-              name: "history",
-              headers: {
-                "x-api-key": this.key,
-                "x-api-token": `base64_encode(${this.email}:${this.key})`,
-                "Content-Type": "application/json",
-              },
-            })
+            (res) => (this.key = res.data.key)
+            // this.$router.push({
+            //   name: "history",
+            //   headers: {
+            //     "x-api-key": this.key,
+            //     "x-api-token": `base64_encode(${this.email}:${this.key})`,
+            //     "Content-Type": "application/json",
+            //   },
+            // }),
           );
         alert("sukses login");
       } catch (err) {
